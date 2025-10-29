@@ -34,12 +34,7 @@ def fill_matrix_with_constraints(grid, row_targets, col_targets, non_negative=Tr
     n_rows, n_cols = grid.shape
 
     # 1. gather unknown positions
-    unknown_positions = [
-        (i, j)
-        for i in range(n_rows)
-        for j in range(n_cols)
-        if np.isnan(grid[i, j])
-    ]
+    unknown_positions = [(i, j) for i in range(n_rows) for j in range(n_cols) if np.isnan(grid[i, j])]
     num_unknowns = len(unknown_positions)
 
     # 2. build linear system A x = b
@@ -52,6 +47,7 @@ def fill_matrix_with_constraints(grid, row_targets, col_targets, non_negative=Tr
         b[r] = row_targets[r]
         for c in range(n_cols):
             val = grid[r, c]
+
             if np.isnan(val):
                 idx = unknown_positions.index((r, c))
                 A[r, idx] += 1.0
@@ -62,6 +58,7 @@ def fill_matrix_with_constraints(grid, row_targets, col_targets, non_negative=Tr
     for c in range(n_cols):
         eq_idx = n_rows + c
         b[eq_idx] = col_targets[c]
+
         for r in range(n_rows):
             val = grid[r, c]
             if np.isnan(val):
