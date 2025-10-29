@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "matrix-filler"
+version = "0.1.0"
+description = "Fill missing matrix values (np.nan) to satisfy row/column sum constraints using bounded least squares."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Shehab Hassani", email = "shhehab.hassani@areednow.com"}
+]
+dependencies = [
+  "numpy",
+  "scipy"
+]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
+
+[project.urls]
+Homepage = "https://github.com/AreedAdmin/matrix-filler.git"
+Source = "https://github.com/AreedAdmin/matrix-filler.git"
